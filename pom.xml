@@ -43,6 +43,21 @@ limitations under the License.
 
   <dependencies>
     <dependency>
+      <groupId>org.apache.activemq</groupId>
+      <artifactId>activemq-client</artifactId>
+      <version>5.11.0.redhat-630283</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.activemq</groupId>
+      <artifactId>activemq-camel</artifactId>
+      <version>5.11.0.redhat-630283</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.activemq</groupId>
+      <artifactId>artemis-jms-client</artifactId>
+      <version>2.0.0.amq-700011</version>
+    </dependency>
+    <dependency>
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-core</artifactId>
       <version>${camel.version}</version>
@@ -69,6 +84,37 @@ limitations under the License.
     </dependency>
   </dependencies>
 
+  <repositories>
+    <repository>
+      <releases>
+        <enabled>true</enabled>
+        <updatePolicy>never</updatePolicy>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <id>fuse-public-repository</id>
+      <name>FuseSource Community Release Repository</name>
+      <url>https://repo.fusesource.com/nexus/content/groups/public</url>
+    </repository>
+    <repository>
+      <releases>
+        <enabled>true</enabled>
+        <updatePolicy>never</updatePolicy>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <id>red-hat-ga-repository</id>
+      <name>Red Hat GA Repository</name>
+      <url>https://maven.repository.redhat.com/ga</url>
+    </repository>
+    <repository>
+      <id>redhat-early-access-repository</id>
+      <url>https://maven.repository.redhat.com/earlyaccess/all</url>
+    </repository>
+  </repositories>
+  
   <build>
     <plugins>
       <plugin>
