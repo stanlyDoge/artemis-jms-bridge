@@ -18,14 +18,18 @@ limitations under the License.
 
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.apache.artemis.examples</groupId>
-  <artifactId>artemis-jms-bridge</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <parent>
+    <groupId>org.apache.artemis.examples</groupId>
+    <artifactId>artemis-jms-bridge</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
+  
+  <artifactId>amq7-jms-bridge</artifactId>
 
-  <packaging>pom</packaging>
+  <packaging>war</packaging>
 
-  <name>AMQ Bridge Examples</name>
-  <description>An example project showing different ways to use bridges with AMQ 6 and 7.</description>
+  <name>AMQ 7 JMS Bridge Example</name>
+  <description>An example project showing how to do JMS bridging in AMQ7 to an AMQ 6.</description>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -41,11 +45,46 @@ limitations under the License.
     <slf4j-jboss-logging.version>1.1.0.Final</slf4j-jboss-logging.version>
   </properties>
 
-  <modules>
-    <module>amq6-amq7-camel</module>
-    <module>amq7-jms-bridge</module>
-    <module>amq7-jms-bridge-ws</module>
-  </modules>
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.activemq</groupId>
+      <artifactId>activemq-client</artifactId>
+      <version>5.11.0.redhat-630283</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.activemq</groupId>
+      <artifactId>activemq-camel</artifactId>
+      <version>5.11.0.redhat-630283</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.activemq</groupId>
+      <artifactId>artemis-jms-client</artifactId>
+      <version>2.0.0.amq-700011</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.activemq</groupId>
+      <artifactId>artemis-server</artifactId>
+      <version>2.0.0.amq-700011</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.activemq</groupId>
+      <artifactId>artemis-jms-server</artifactId>
+      <version>2.0.0.amq-700011</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-web</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.slf4j</groupId>
+      <artifactId>slf4j-jboss-logging</artifactId>
+      <version>${slf4j-jboss-logging.version}</version>
+    </dependency>
+  </dependencies>
 
   <repositories>
     <repository>
@@ -77,5 +116,15 @@ limitations under the License.
       <url>https://maven.repository.redhat.com/earlyaccess/all</url>
     </repository>
   </repositories>
+  
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>${maven-war-plugin.version}</version>
+      </plugin>
+    </plugins>
+  </build>
 
 </project>
