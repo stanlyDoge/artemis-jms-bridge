@@ -39,7 +39,7 @@ Start the ActiveMQ broker.
 
 Send some messages to the ActiveMQ broker.
 
-`./apache-activemq-5.11.0.redhat-630283-05/bin/activemq producer --user admin --password password --destination queue://TEST.FOO`
+`./apache-activemq-5.11.0/bin/activemq producer --user admin --password password --destination queue://TEST.FOO`
 
 Log into the Artemis console and browse the messages in the TEST.FOO queue.
 
