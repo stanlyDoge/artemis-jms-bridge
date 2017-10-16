@@ -22,7 +22,7 @@ limitations under the License.
         class="org.apache.activemq.ActiveMQConnectionFactory">
     <property name="brokerURL" value="tcp://localhost:61616"/>
     <property name="userName" value="admin"/>
-    <property name="password" value="admin"/>
+    <property name="password" value="password"/>
   </bean>
 
   <bean id="jmsConfig"
@@ -39,7 +39,7 @@ limitations under the License.
   <bean id="amq7ConnectionFactory" class="org.apache.activemq.artemis.jms.client.ActiveMQConnectionFactory">
     <constructor-arg name="url" value="tcp://localhost:61617"/>
     <constructor-arg name="user" value="admin"/>
-    <constructor-arg name="password" value="admin"/>
+    <constructor-arg name="password" value="password"/>
   </bean>
 
   <bean id="amq7Config"
