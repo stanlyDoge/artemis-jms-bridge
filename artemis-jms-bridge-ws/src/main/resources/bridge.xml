@@ -29,15 +29,15 @@ limitations under the License.
       <constructor-arg ref="wmqConnectionFactory"/>
    </bean>
 
-   <bean id="amq7ConnectionFactory" class="org.apache.activemq.artemis.jms.client.ActiveMQConnectionFactory">
+   <bean id="artemisConnectionFactory" class="org.apache.activemq.artemis.jms.client.ActiveMQConnectionFactory">
       <constructor-arg value="vm:0"/>
    </bean>
 
-   <bean id="amq7ConnectionFactoryFactory" class="org.artemis.bridge.ConnectionFactoryFactoryBean">
-      <constructor-arg ref="amq7ConnectionFactory"/>
+   <bean id="artemisConnectionFactoryFactory" class="org.artemis.bridge.ConnectionFactoryFactoryBean">
+      <constructor-arg ref="artemisConnectionFactory"/>
    </bean>
 
-   <bean id="amq7Destination" class="org.apache.activemq.artemis.jms.client.ActiveMQQueue">
+   <bean id="artemisDestination" class="org.apache.activemq.artemis.jms.client.ActiveMQQueue">
       <constructor-arg value="TEST.BAR"/>
    </bean>
 
@@ -45,20 +45,20 @@ limitations under the License.
       <constructor-arg value="TEST.BAR"/>
    </bean>
 
-   <bean id="amq6DestinationFactory" class="org.artemis.bridge.DestinationFactoryBean">
+   <bean id="activemqDestinationFactory" class="org.artemis.bridge.DestinationFactoryBean">
       <constructor-arg ref="wmqDestination"/>
    </bean>
 
-   <bean id="amq7DestinationFactory" class="org.artemis.bridge.DestinationFactoryBean">
-      <constructor-arg ref="amq7Destination"/>
+   <bean id="artemisDestinationFactory" class="org.artemis.bridge.DestinationFactoryBean">
+      <constructor-arg ref="artemisDestination"/>
    </bean>
 
-   <bean id="amq7-jms-bridge" class="org.apache.activemq.artemis.jms.bridge.impl.JMSBridgeImpl" init-method="start" destroy-method="stop">
-      <property name="bridgeName" value="amq7-jms-bridge"/>
-      <property name="sourceConnectionFactoryFactory" ref="amq7ConnectionFactoryFactory"/>
+   <bean id="artemis-jms-bridge" class="org.apache.activemq.artemis.jms.bridge.impl.JMSBridgeImpl" init-method="start" destroy-method="stop">
+      <property name="bridgeName" value="artemis-jms-bridge"/>
+      <property name="sourceConnectionFactoryFactory" ref="artemisConnectionFactoryFactory"/>
       <property name="targetConnectionFactoryFactory" ref="wmqConnectionFactoryFactory"/>
-      <property name="sourceDestinationFactory" ref="amq7DestinationFactory"/>
-      <property name="targetDestinationFactory" ref="amq6DestinationFactory"/>
+      <property name="sourceDestinationFactory" ref="artemisDestinationFactory"/>
+      <property name="targetDestinationFactory" ref="activemqDestinationFactory"/>
       <property name="qualityOfServiceMode" value="AT_MOST_ONCE"/>
       <property name="failureRetryInterval" value="5000"/>
       <property name="failoverTimeout" value="5000"/>

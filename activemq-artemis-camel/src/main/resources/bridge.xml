@@ -36,21 +36,21 @@ limitations under the License.
     <property name="configuration" ref="jmsConfig"/>
   </bean>
 
-  <bean id="amq7ConnectionFactory" class="org.apache.activemq.artemis.jms.client.ActiveMQConnectionFactory">
+  <bean id="artemisConnectionFactory" class="org.apache.activemq.artemis.jms.client.ActiveMQConnectionFactory">
     <constructor-arg name="url" value="tcp://localhost:61617"/>
     <constructor-arg name="user" value="admin"/>
     <constructor-arg name="password" value="password"/>
   </bean>
 
-  <bean id="amq7Config"
+  <bean id="artemisConfig"
         class="org.apache.camel.component.jms.JmsConfiguration">
-    <property name="connectionFactory" ref="amq7ConnectionFactory"/>
+    <property name="connectionFactory" ref="artemisConnectionFactory"/>
     <property name="concurrentConsumers" value="10"/>
   </bean>
 
-  <bean id="amq7"
+  <bean id="artemis"
         class="org.apache.camel.component.jms.JmsComponent">
-    <property name="configuration" ref="amq7Config"/>
+    <property name="configuration" ref="artemisConfig"/>
   </bean>
   
 
@@ -59,7 +59,7 @@ limitations under the License.
     
     <route id="bridge_TEST.FOO">
        <from uri="activemq:queue:TEST.FOO"/>
-       <to uri="amq7:queue:TEST.FOO"/>
+       <to uri="artemis:queue:TEST.FOO"/>
     </route>
     
   </camelContext>

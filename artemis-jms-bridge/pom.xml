@@ -20,16 +20,16 @@ limitations under the License.
 
   <parent>
     <groupId>org.apache.artemis.examples</groupId>
-    <artifactId>artemis-jms-bridge</artifactId>
+    <artifactId>artemis-jms-bridge-parent</artifactId>
     <version>1.0.0-SNAPSHOT</version>
   </parent>
   
-  <artifactId>amq6-amq7-camel</artifactId>
+  <artifactId>artemis-jms-bridge</artifactId>
 
   <packaging>war</packaging>
 
-  <name>AMQ6 to AMQ 7 Camel Example</name>
-  <description>An example project showing how to do JMS bridging in AMQ6 to AMQ7 using Apache Camel.</description>
+  <name>Artemis JMS Bridge Example</name>
+  <description>An example project showing how to do JMS bridging in Artemis to an ActiveMQ.</description>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -60,21 +60,19 @@ limitations under the License.
       <groupId>org.apache.activemq</groupId>
       <artifactId>artemis-jms-client</artifactId>
       <version>2.0.0.amq-700011</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>org.apache.camel</groupId>
-      <artifactId>camel-core</artifactId>
-      <version>${camel.version}</version>
+      <groupId>org.apache.activemq</groupId>
+      <artifactId>artemis-server</artifactId>
+      <version>2.0.0.amq-700011</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>org.apache.camel</groupId>
-      <artifactId>camel-spring</artifactId>
-      <version>${camel.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.camel</groupId>
-      <artifactId>camel-jms</artifactId>
-      <version>${camel.version}</version>
+      <groupId>org.apache.activemq</groupId>
+      <artifactId>artemis-jms-server</artifactId>
+      <version>2.0.0.amq-700011</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>

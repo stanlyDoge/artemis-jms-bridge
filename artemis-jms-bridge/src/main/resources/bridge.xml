@@ -16,47 +16,47 @@ limitations under the License.
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-   <bean id="amq6ConnectionFactory"
+   <bean id="activemqConnectionFactory"
          class="org.apache.activemq.ActiveMQConnectionFactory">
       <property name="brokerURL" value="tcp://localhost:61616"/>
       <property name="userName" value="admin"/>
       <property name="password" value="password"/>
    </bean>
 
-   <bean id="amq6ConnectionFactoryFactory" class="org.artemis.bridge.ConnectionFactoryFactoryBean">
-      <constructor-arg ref="amq6ConnectionFactory"/>
+   <bean id="activemqConnectionFactoryFactory" class="org.artemis.bridge.ConnectionFactoryFactoryBean">
+      <constructor-arg ref="activemqConnectionFactory"/>
    </bean>
 
-   <bean id="amq7ConnectionFactory" class="org.apache.activemq.artemis.jms.client.ActiveMQConnectionFactory">
+   <bean id="artemisConnectionFactory" class="org.apache.activemq.artemis.jms.client.ActiveMQConnectionFactory">
       <constructor-arg value="vm:0"/>
    </bean>
 
-   <bean id="amq7ConnectionFactoryFactory" class="org.artemis.bridge.ConnectionFactoryFactoryBean">
-      <constructor-arg ref="amq7ConnectionFactory"/>
+   <bean id="artemisConnectionFactoryFactory" class="org.artemis.bridge.ConnectionFactoryFactoryBean">
+      <constructor-arg ref="artemisConnectionFactory"/>
    </bean>
 
-   <bean id="amq6Destination" class="org.apache.activemq.command.ActiveMQQueue">
+   <bean id="activemqDestination" class="org.apache.activemq.command.ActiveMQQueue">
       <constructor-arg value="TEST.BAR"/>
    </bean>
 
-   <bean id="amq7Destination" class="org.apache.activemq.artemis.jms.client.ActiveMQQueue">
+   <bean id="artemisDestination" class="org.apache.activemq.artemis.jms.client.ActiveMQQueue">
       <constructor-arg value="TEST.BAR"/>
    </bean>
 
-   <bean id="amq6DestinationFactory" class="org.artemis.bridge.DestinationFactoryBean">
-      <constructor-arg ref="amq6Destination"/>
+   <bean id="activemqDestinationFactory" class="org.artemis.bridge.DestinationFactoryBean">
+      <constructor-arg ref="activemqDestination"/>
    </bean>
 
-   <bean id="amq7DestinationFactory" class="org.artemis.bridge.DestinationFactoryBean">
-      <constructor-arg ref="amq7Destination"/>
+   <bean id="artemisDestinationFactory" class="org.artemis.bridge.DestinationFactoryBean">
+      <constructor-arg ref="artemisDestination"/>
    </bean>
 
-   <bean id="amq7-jms-bridge" class="org.apache.activemq.artemis.jms.bridge.impl.JMSBridgeImpl" init-method="start" destroy-method="stop">
-      <property name="bridgeName" value="amq7-jms-bridge"/>
-      <property name="sourceConnectionFactoryFactory" ref="amq7ConnectionFactoryFactory"/>
-      <property name="targetConnectionFactoryFactory" ref="amq6ConnectionFactoryFactory"/>
-      <property name="sourceDestinationFactory" ref="amq7DestinationFactory"/>
-      <property name="targetDestinationFactory" ref="amq6DestinationFactory"/>
+   <bean id="artemis-jms-bridge" class="org.apache.activemq.artemis.jms.bridge.impl.JMSBridgeImpl" init-method="start" destroy-method="stop">
+      <property name="bridgeName" value="artemis-jms-bridge"/>
+      <property name="sourceConnectionFactoryFactory" ref="artemisConnectionFactoryFactory"/>
+      <property name="targetConnectionFactoryFactory" ref="activemqConnectionFactoryFactory"/>
+      <property name="sourceDestinationFactory" ref="artemisDestinationFactory"/>
+      <property name="targetDestinationFactory" ref="activemqDestinationFactory"/>
       <property name="qualityOfServiceMode" value="AT_MOST_ONCE"/>
       <property name="failureRetryInterval" value="5000"/>
       <property name="failoverTimeout" value="5000"/>

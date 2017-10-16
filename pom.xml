@@ -19,13 +19,13 @@ limitations under the License.
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.apache.artemis.examples</groupId>
-  <artifactId>artemis-jms-bridge</artifactId>
+  <artifactId>artemis-jms-bridge-parent</artifactId>
   <version>1.0.0-SNAPSHOT</version>
 
   <packaging>pom</packaging>
 
-  <name>AMQ Bridge Examples</name>
-  <description>An example project showing different ways to use bridges with AMQ 6 and 7.</description>
+  <name>Active Messaging Bridge Examples</name>
+  <description>An example project showing different ways to use bridges with ActiveMQ and Artemis.</description>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -42,9 +42,9 @@ limitations under the License.
   </properties>
 
   <modules>
-    <module>amq6-amq7-camel</module>
-    <module>amq7-jms-bridge</module>
-    <module>amq7-jms-bridge-ws</module>
+    <module>activemq-artemis-camel</module>
+    <module>artemis-jms-bridge</module>
+    <module>artemis-jms-bridge-ws</module>
   </modules>
 
   <repositories>
