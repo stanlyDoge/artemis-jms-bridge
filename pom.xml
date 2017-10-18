@@ -44,7 +44,6 @@ limitations under the License.
   <modules>
     <module>activemq-artemis-camel</module>
     <module>artemis-jms-bridge</module>
-    <module>artemis-jms-bridge-ws</module>
   </modules>
 
   <repositories>
